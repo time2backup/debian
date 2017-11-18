@@ -1,0 +1,12 @@
+#!/bin/bash
+
+install_path=/usr/src/time2backup
+
+# delete application icon
+rm -f "$install_path/time2backup.desktop"
+
+# run uninstall command
+"$install_path/time2backup.sh" uninstall --yes > /dev/null
+
+# do not break uninstall process if the previous command fails
+true

@@ -1,0 +1,6 @@
+#!/bin/bash
+
+/usr/src/time2backup/time2backup.sh install > /dev/null
+
+# do not break install process if the previous command fails
+true
