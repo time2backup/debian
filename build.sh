@@ -18,20 +18,53 @@ if ! [ -d "$current_directory/time2backup" ] ; then
 	exit 1
 fi
 
-# get time2backup version
-version=$(grep "^version=" "$current_directory/time2backup/time2backup.sh" | head -1 | cut -d= -f2)
+
+###############
+#  FUNCTIONS  #
+###############
+
+# Print usage
+print_help() {
+	echo "Usage: $0 [OPTIONS]"
+	echo "Options:"
+	echo "   -v, --version VERSION  Specify a version"
+	echo "   -h, --help             Print this help"
+}
+
+
+##################
+#  MAIN PROGRAM  #
+##################
+
+# get options
+while [ $# -gt 0 ] ; do
+	case $1 in
+		-v|--version)
+			if [ -z "$2" ] ; then
+				print_help
+				exit 1
+			fi
+			version=$2
+			;;
+		*)
+			break
+			;;
+	esac
+	shift
+done
+
+# prompt to choose version
 if [ -z "$version" ] ; then
-	echo "ERROR: Cannot get time2backup version!"
-	exit 1
-fi
+	version=$(grep "^version=" "$current_directory/time2backup/time2backup.sh" | head -1 | cut -d= -f2)
 
-echo -n "Build debian package for time2backup v$version? (y/N) "
-read confirm
-if [ "$confirm" != "y" ] ; then
-	exit
-fi
+	echo -n "Choose version: [$version] "
+	read version_user
+	if [ -n "$version_user" ] ; then
+		version=$version_user
+	fi
 
-echo
+	echo
+fi
 
 # create build environment
 mkdir -p "$current_directory/build"
@@ -121,22 +154,8 @@ if [ $? != 0 ] ; then
 	exit 9
 fi
 
-# going up
-cd "$version"
-if [ $? != 0 ] ; then
-	echo "ERROR: Failed to go into the archive directory!"
-	exit 7
-fi
-
-echo "Generating checksum..."
-sha256sum $archive > sha256sum.txt
-if [ $? != 0 ] ; then
-	echo "...Failed!"
-	exit 10
-fi
-
 echo "Clean files..."
-sudo rm -rf ../package
+sudo rm -rf package
 
 echo
 echo "Package is ready!"
