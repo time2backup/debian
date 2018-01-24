@@ -5,4 +5,5 @@ Priority: optional
 Architecture: all
 Depends: bash, rsync
 Maintainer: Jean Prunneaux <jean@prunneaux.com>
+Homepage: https://time2time2backup.org
 Description: Powerful backup tool using rsync

@@ -3,9 +3,9 @@
 #
 #  Build script for time2backup debian package
 #
-#  Website: https://time2backup.github.io
+#  Website: https://time2backup.org
 #  MIT License
-#  Copyright (c) 2017 Jean Prunneaux
+#  Copyright (c) 2017-2018 Jean Prunneaux
 #
 
 

@@ -1,6 +1,6 @@
 # time2backup debian package
 
-Build the [time2backup](https://time2backup.github.io) debian package.
+Build the [time2backup](https://time2backup.org) debian package.
 
 ## Build instructions
 1. Clone time2backup in the current directory: `git clone https://github.com/time2backup/time2backup.git`
@@ -14,4 +14,4 @@ This project is licensed under the MIT License. See [LICENSE.md](LICENSE.md) for
 ## Credits
 Author: Jean Prunneaux  [http://jean.prunneaux.com](http://jean.prunneaux.com)
 
-time2backup website: [https://time2backup.github.io](https://time2backup.github.io)
+time2backup website: [https://time2backup.org](https://time2backup.org)
